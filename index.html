@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Knowledge - Football Stats AI Hub</title>
+  
+  <!-- Google Fonts: Outfit and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-wrapper">
+          <i class="fa-solid fa-circle-nodes logo-icon"></i>
+          <span class="logo-text">Ball Knowledge<span class="logo-highlight">.AI</span></span>
+        </div>
+        <p class="logo-tagline">Football Stats Central</p>
+      </div>
+      
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="dashboard">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-tab="player-compare">
+          <i class="fa-solid fa-users-viewfinder"></i>
+          <span>Player Compare</span>
+        </button>
+        <button class="nav-item" data-tab="team-compare">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Team Compare</span>
+        </button>
+        <button class="nav-item" data-tab="match-center">
+          <i class="fa-solid fa-circle-play"></i>
+          <span>Match Center</span>
+        </button>
+        <button class="nav-item" data-tab="stats-hub">
+          <i class="fa-solid fa-table-list"></i>
+          <span>Stats Hub</span>
+        </button>
+        <button class="nav-item" data-tab="ai-assistant">
+          <i class="fa-solid fa-robot"></i>
+          <span>AI Assistant</span>
+        </button>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="theme-info">
+          <i class="fa-solid fa-futbol pitch-pulse"></i>
+          <span>Database Live</span>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      
+      <!-- Top Score Ticker -->
+      <header class="top-ticker">
+        <div class="ticker-label">
+          <span class="pulse-dot"></span>
+          <span>LIVE TICKER</span>
+        </div>
+        <div class="ticker-scroll" id="ticker-scroll">
+          <div class="ticker-item">
+            <span class="ticker-comp">La Liga</span>
+            <span class="ticker-teams">R. Madrid 2 - 1 Barcelona</span>
+            <span class="ticker-time">FT</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-comp">Nations League</span>
+            <span class="ticker-teams">France 2 - 1 Portugal</span>
+            <span class="ticker-time">FT</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-comp">Champions League</span>
+            <span class="ticker-teams">Barcelona 3 - 0 Bayern M.</span>
+            <span class="ticker-time">FT</span>
+          </div>
+          <div class="ticker-item">
+            <span class="ticker-comp">WC Qualifiers</span>
+            <span class="ticker-teams">Argentina 1 - 0 Brazil</span>
+            <span class="ticker-time">FT</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Dynamic Tab Views -->
+      <div class="tab-panel active" id="dashboard">
+        <section class="dashboard-hero">
+          <div class="hero-content">
+            <span class="badge badge-accent">Featured Debate</span>
+            <h1>Messi vs. Ronaldo</h1>
+            <p>The eternal debate settled with granular telemetry, trophy breakdowns, and an AI analysis engine.</p>
+            <button class="btn btn-primary" id="btn-hero-compare">
+              <i class="fa-solid fa-scale-balanced"></i> Compare Now
+            </button>
+          </div>
+          <div class="hero-visual">
+            <div class="visual-card Messi">LM10</div>
+            <div class="vs-text">VS</div>
+            <div class="visual-card Ronaldo">CR7</div>
+          </div>
+        </section>
+        
+        <div class="dashboard-grid">
+          <!-- Quick Compare Links -->
+          <div class="card card-glass trending-card">
+            <h3><i class="fa-solid fa-fire text-accent"></i> Trending Comparisons</h3>
+            <div class="compare-links-list">
+              <div class="quick-link-item" data-p1="pele" data-p2="maradona">
+                <div class="quick-link-left">
+                  <span class="p-initials bg-gold">P</span>
+                  <span class="vs">vs</span>
+                  <span class="p-initials bg-gold">M</span>
+                  <span class="names-label">Pelé vs. Diego Maradona</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+              </div>
+              <div class="quick-link-item" data-p1="haaland" data-p2="mbappe">
+                <div class="quick-link-left">
+                  <span class="p-initials bg-blue">H</span>
+                  <span class="vs">vs</span>
+                  <span class="p-initials bg-blue">M</span>
+                  <span class="names-label">Erling Haaland vs. Kylian Mbappé</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+              </div>
+              <div class="quick-link-item" data-p1="zidane" data-p2="debruyne">
+                <div class="quick-link-left">
+                  <span class="p-initials bg-mint">Z</span>
+                  <span class="vs">vs</span>
+                  <span class="p-initials bg-mint">D</span>
+                  <span class="names-label">Zinedine Zidane vs. Kevin De Bruyne</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Latest Football News Mock Feed -->
+          <div class="card card-glass news-card">
+            <h3><i class="fa-regular fa-newspaper text-accent"></i> Ball Knowledge News</h3>
+            <div class="news-list">
+              <div class="news-item">
+                <span class="news-date">Just Now</span>
+                <h4>Jude Bellingham Wins El Clásico Man of the Match</h4>
+                <p>Jude Bellingham's late winner earns Real Madrid crucial 3 points at the Bernabéu.</p>
+              </div>
+              <div class="news-item">
+                <span class="news-date">2 hrs ago</span>
+                <h4>Lamine Yamal Curler Goes Viral</h4>
+                <p>The Barcelona teenage sensation matches a Champions League record with a spectacular top-corner curl.</p>
+              </div>
+              <div class="news-item">
+                <span class="news-date">4 hrs ago</span>
+                <h4>Erling Haaland Eyes Golden Boot</h4>
+                <p>City striker extends lead at the top of the scorers chart after a double header over Aston Villa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Player Compare Tab -->
+      <div class="tab-panel" id="player-compare">
+        <section class="selection-bar">
+          <div class="selector-container">
+            <label for="select-player-1">Player 1</label>
+            <select id="select-player-1" class="custom-select">
+              <optgroup label="Active Stars">
+                <option value="messi">Lionel Messi</option>
+                <option value="ronaldo">Cristiano Ronaldo</option>
+                <option value="haaland">Erling Haaland</option>
+                <option value="mbappe">Kylian Mbappé</option>
+                <option value="debruyne">Kevin De Bruyne</option>
+                <option value="salah">Mohamed Salah</option>
+              </optgroup>
+              <optgroup label="Legends">
+                <option value="pele">Pelé</option>
+                <option value="maradona">Diego Maradona</option>
+                <option value="zidane">Zinedine Zidane</option>
+                <option value="cruyff">Johan Cruyff</option>
+                <option value="ronaldinho">Ronaldinho</option>
+                <option value="r9">Ronaldo Nazário (R9)</option>
+              </optgroup>
+            </select>
+          </div>
+          
+          <div class="vs-badge">VS</div>
+          
+          <div class="selector-container">
+            <label for="select-player-2">Player 2</label>
+            <select id="select-player-2" class="custom-select">
+              <optgroup label="Active Stars">
+                <option value="messi">Lionel Messi</option>
+                <option value="ronaldo" selected>Cristiano Ronaldo</option>
+                <option value="haaland">Erling Haaland</option>
+                <option value="mbappe">Kylian Mbappé</option>
+                <option value="debruyne">Kevin De Bruyne</option>
+                <option value="salah">Mohamed Salah</option>
+              </optgroup>
+              <optgroup label="Legends">
+                <option value="pele">Pelé</option>
+                <option value="maradona">Diego Maradona</option>
+                <option value="zidane">Zinedine Zidane</option>
+                <option value="cruyff">Johan Cruyff</option>
+                <option value="ronaldinho">Ronaldinho</option>
+                <option value="r9">Ronaldo Nazário (R9)</option>
+              </optgroup>
+            </select>
+          </div>
+        </section>
+        
+        <!-- Player Bio Section -->
+        <div class="compare-profiles-grid">
+          <div class="profile-card profile-1" id="p1-profile">
+            <div class="profile-header">
+              <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+              <div>
+                <h2 id="p1-name">Lionel Messi</h2>
+                <p class="profile-meta"><span id="p1-club">Inter Miami</span> | <span id="p1-country">Argentina</span></p>
+              </div>
+            </div>
+            <p class="profile-desc" id="p1-desc"></p>
+          </div>
+          
+          <div class="profile-card profile-2" id="p2-profile">
+            <div class="profile-header">
+              <div class="profile-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+              <div>
+                <h2 id="p2-name">Cristiano Ronaldo</h2>
+                <p class="profile-meta"><span id="p2-club">Al Nassr</span> | <span id="p2-country">Portugal</span></p>
+              </div>
+            </div>
+            <p class="profile-desc" id="p2-desc"></p>
+          </div>
+        </div>
+        
+        <!-- Main Stats Grid -->
+        <div class="compare-main-grid">
+          <!-- Charts Box -->
+          <div class="card card-glass charts-box">
+            <h3><i class="fa-solid fa-chart-radar text-accent"></i> Attributes Comparison</h3>
+            <div class="chart-wrapper">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+          
+          <!-- Detailed Stats Table -->
+          <div class="card card-glass table-box">
+            <h3><i class="fa-solid fa-list-check text-accent"></i> Granular Statistics</h3>
+            <div class="table-scroll">
+              <table class="compare-table">
+                <thead>
+                  <tr>
+                    <th id="table-p1-header">Player 1</th>
+                    <th>Metric</th>
+                    <th id="table-p2-header">Player 2</th>
+                  </tr>
+                </thead>
+                <tbody id="compare-table-body">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Interactive Heatmap Pitch & AI Judge -->
+        <div class="compare-footer-grid">
+          <!-- Interactive Pitch Visualizer -->
+          <div class="card card-glass pitch-card">
+            <h3><i class="fa-solid fa-circle-dot text-accent"></i> Playing Zone Grid</h3>
+            <div class="pitches-container">
+              <div class="pitch-visual-wrapper">
+                <span class="pitch-player-label" id="pitch-p1-label">Messi</span>
+                <div class="football-pitch" id="pitch-p1">
+                  <!-- Grid points will have background-color glowing based on heatmap positioning -->
+                  <div class="pitch-grid">
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="pitch-visual-wrapper">
+                <span class="pitch-player-label" id="pitch-p2-label">Ronaldo</span>
+                <div class="football-pitch" id="pitch-p2">
+                  <div class="pitch-grid">
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-def"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="mid-att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                    <div class="grid-cell" data-zone="att"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="pitch-caption">Primary heatmap zones (Highlighted areas denote high positioning frequency).</p>
+          </div>
+          
+          <!-- AI Debate Judge -->
+          <div class="card card-glass ai-judge-card">
+            <div class="judge-header">
+              <h3><i class="fa-solid fa-brain-circuit"></i> AI Debate Judge</h3>
+              <span class="status-pill status-ready" id="judge-status">
+                <span class="pulse-dot"></span> ANALYZING
+              </span>
+            </div>
+            <div class="judge-content">
+              <div id="ai-judge-output" class="ai-text-output">
+                <!-- Injected via typewriter animation -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Compare Tab -->
+      <div class="tab-panel" id="team-compare">
+        <section class="selection-bar">
+          <div class="selector-container">
+            <label for="select-team-1">Team 1</label>
+            <select id="select-team-1" class="custom-select">
+              <optgroup label="Clubs">
+                <option value="real_madrid">Real Madrid CF</option>
+                <option value="barcelona">FC Barcelona</option>
+                <option value="man_city">Manchester City</option>
+                <option value="liverpool">Liverpool FC</option>
+                <option value="bayern_munich">Bayern Munich</option>
+                <option value="psg">Paris Saint-Germain</option>
+                <option value="arsenal">Arsenal FC</option>
+                <option value="juventus">Juventus FC</option>
+              </optgroup>
+              <optgroup label="National Teams">
+                <option value="argentina">Argentina</option>
+                <option value="france">France</option>
+                <option value="brazil">Brazil</option>
+                <option value="portugal">Portugal</option>
+                <option value="spain">Spain</option>
+                <option value="england">England</option>
+                <option value="germany">Germany</option>
+                <option value="italy">Italy</option>
+              </optgroup>
+            </select>
+          </div>
+          
+          <div class="vs-badge">VS</div>
+          
+          <div class="selector-container">
+            <label for="select-team-2">Team 2</label>
+            <select id="select-team-2" class="custom-select">
+              <optgroup label="Clubs">
+                <option value="real_madrid">Real Madrid CF</option>
+                <option value="barcelona" selected>FC Barcelona</option>
+                <option value="man_city">Manchester City</option>
+                <option value="liverpool">Liverpool FC</option>
+                <option value="bayern_munich">Bayern Munich</option>
+                <option value="psg">Paris Saint-Germain</option>
+                <option value="arsenal">Arsenal FC</option>
+                <option value="juventus">Juventus FC</option>
+              </optgroup>
+              <optgroup label="National Teams">
+                <option value="argentina">Argentina</option>
+                <option value="france">France</option>
+                <option value="brazil">Brazil</option>
+                <option value="portugal">Portugal</option>
+                <option value="spain">Spain</option>
+                <option value="england">England</option>
+                <option value="germany">Germany</option>
+                <option value="italy">Italy</option>
+              </optgroup>
+            </select>
+          </div>
+        </section>
+        
+        <div class="team-compare-grid">
+          <!-- Overview Cards -->
+          <div class="card card-glass team-meta-card">
+            <h3><i class="fa-solid fa-circle-info text-accent"></i> Head to Head Profile</h3>
+            <div class="team-meta-split">
+              <div class="team-meta-col text-left">
+                <h4 id="t1-name">Real Madrid CF</h4>
+                <p>Manager: <strong id="t1-manager">Carlo Ancelotti</strong></p>
+                <p>Stadium: <strong id="t1-stadium">Santiago Bernabéu</strong></p>
+              </div>
+              <div class="vs-text">VS</div>
+              <div class="team-meta-col text-right">
+                <h4 id="t2-name">FC Barcelona</h4>
+                <p>Manager: <strong id="t2-manager">Hansi Flick</strong></p>
+                <p>Stadium: <strong id="t2-stadium">Spotify Camp Nou</strong></p>
+              </div>
+            </div>
+            <div class="trophy-shelf-compare" id="trophy-shelf-compare">
+              <!-- Dynamically populated trophy visual comparisons -->
+            </div>
+          </div>
+          
+          <!-- Squad listings -->
+          <div class="card card-glass squad-card">
+            <h3><i class="fa-solid fa-people-group text-accent"></i> Key Profiles</h3>
+            <div class="squad-split">
+              <div class="squad-list-col">
+                <h5>Key Star Players</h5>
+                <ul id="t1-key-players" class="bullet-list text-accent-list">
+                  <!-- Dynamic -->
+                </ul>
+              </div>
+              <div class="squad-list-col text-right">
+                <h5>Key Star Players</h5>
+                <ul id="t2-key-players" class="bullet-list text-accent-list text-right">
+                  <!-- Dynamic -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-stats-box card card-glass">
+          <h3><i class="fa-solid fa-trophy text-accent"></i> Historical Trophy Breakdown</h3>
+          <div class="table-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th id="table-t1-header">Team 1</th>
+                  <th>Honor / Category</th>
+                  <th id="table-t2-header">Team 2</th>
+                </tr>
+              </thead>
+              <tbody id="team-compare-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Match Center Tab -->
+      <div class="tab-panel" id="match-center">
+        <section class="simulator-controls card card-glass">
+          <div class="controls-row">
+            <div class="control-item">
+              <label for="select-match">Preset Match</label>
+              <select id="select-match" class="custom-select select-inline">
+                <option value="club_match">El Clásico: Real Madrid vs Barcelona</option>
+                <option value="national_match">World Cup Rematch: Argentina vs France</option>
+              </select>
+            </div>
+            
+            <div class="control-item">
+              <label for="sim-speed">Simulation Speed</label>
+              <select id="sim-speed" class="custom-select select-inline">
+                <option value="1000">1x (Real-time Comments)</option>
+                <option value="500">2x Speed</option>
+                <option value="200">5x Speed</option>
+                <option value="50">10x Speed (Blitz)</option>
+              </select>
+            </div>
+            
+            <div class="actions-group">
+              <button class="btn btn-primary" id="btn-start-sim">
+                <i class="fa-solid fa-play"></i> Start Match
+              </button>
+              <button class="btn btn-secondary" id="btn-reset-sim">
+                <i class="fa-solid fa-rotate-left"></i> Reset
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Live HUD Scoreboard -->
+        <div class="scoreboard-hud card card-glass">
+          <div class="hud-comp" id="hud-match-title">La Liga Showdown</div>
+          
+          <div class="hud-main">
+            <div class="hud-team home">
+              <span class="hud-team-name" id="hud-home-name">Real Madrid</span>
+            </div>
+            
+            <div class="hud-score-center">
+              <div class="score-display" id="hud-score">0 - 0</div>
+              <div class="minute-badge pulse-on" id="hud-time">0'</div>
+            </div>
+            
+            <div class="hud-team away">
+              <span class="hud-team-name" id="hud-away-name">Barcelona</span>
+            </div>
+          </div>
+          
+          <div class="hud-events-bar" id="hud-events">
+            <!-- Event icons dynamically added (Goal, yellow/red cards) -->
+          </div>
+        </div>
+        
+        <div class="match-details-grid">
+          <!-- Live Match Stats -->
+          <div class="card card-glass stats-console">
+            <h3><i class="fa-solid fa-chart-column text-accent"></i> Match Stats Console</h3>
+            <div class="live-stats-wrapper">
+              <div class="stat-progress-item">
+                <div class="stat-label">
+                  <span id="stat-home-poss">50%</span>
+                  <span>Possession</span>
+                  <span id="stat-away-poss">50%</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar home-bar" id="bar-home-poss" style="width: 50%"></div>
+                  <div class="progress-bar away-bar" id="bar-away-poss" style="width: 50%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-progress-item">
+                <div class="stat-label">
+                  <span id="stat-home-shots">0</span>
+                  <span>Shots</span>
+                  <span id="stat-away-shots">0</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar home-bar" id="bar-home-shots" style="width: 0%"></div>
+                  <div class="progress-bar away-bar" id="bar-away-shots" style="width: 0%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-progress-item">
+                <div class="stat-label">
+                  <span id="stat-home-corners">0</span>
+                  <span>Corners</span>
+                  <span id="stat-away-corners">0</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar home-bar" id="bar-home-corners" style="width: 0%"></div>
+                  <div class="progress-bar away-bar" id="bar-away-corners" style="width: 0%"></div>
+                </div>
+              </div>
+              
+              <div class="stat-progress-item">
+                <div class="stat-label">
+                  <span id="stat-home-fouls">0</span>
+                  <span>Fouls</span>
+                  <span id="stat-away-fouls">0</span>
+                </div>
+                <div class="progress-bar-container">
+                  <div class="progress-bar home-bar" id="bar-home-fouls" style="width: 0%"></div>
+                  <div class="progress-bar away-bar" id="bar-away-fouls" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Live Commentary text -->
+          <div class="card card-glass commentary-console">
+            <h3><i class="fa-regular fa-comment-dots text-accent"></i> Live Text Commentary</h3>
+            <div class="commentary-list" id="commentary-list">
+              <p class="empty-feed-msg">Simulator idle. Choose a match and click "Start Match" to simulate the action.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Fixtures lists -->
+        <div class="schedules-grid">
+          <div class="card card-glass fixtures-box">
+            <h3><i class="fa-solid fa-calendar-days text-accent"></i> Upcoming Fixtures</h3>
+            <div class="fixtures-list" id="upcoming-fixtures-list">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+          
+          <div class="card card-glass results-box">
+            <h3><i class="fa-solid fa-clipboard-check text-accent"></i> Recent Results</h3>
+            <div class="results-list" id="recent-results-list">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats Hub Tab -->
+      <div class="tab-panel" id="stats-hub">
+        <section class="hub-tabs card card-glass">
+          <button class="btn hub-tab-btn active" data-league="premier_league">Premier League</button>
+          <button class="btn hub-tab-btn" data-league="la_liga">La Liga</button>
+        </section>
+        
+        <div class="stats-hub-main-grid">
+          <!-- Standings Table -->
+          <div class="card card-glass standings-card">
+            <h3 id="league-title">Premier League Standing</h3>
+            <div class="table-scroll">
+              <table class="hub-standing-table">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Club</th>
+                    <th>MP</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GD</th>
+                    <th>PTS</th>
+                    <th class="hide-mobile">Form</th>
+                  </tr>
+                </thead>
+                <tbody id="league-standing-body">
+                  <!-- Dynamic -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Leaderboards -->
+          <div class="leaderboard-col">
+            <div class="card card-glass leaderboard-card">
+              <h3><i class="fa-solid fa-fire-flame-simple text-accent"></i> Top Goalscorers</h3>
+              <div class="leaderboard-list" id="top-scorers-list">
+                <!-- Dynamic -->
+              </div>
+            </div>
+            
+            <div class="card card-glass leaderboard-card">
+              <h3><i class="fa-solid fa-hands-helper text-accent"></i> Top Assisters</h3>
+              <div class="leaderboard-list" id="top-assisters-list">
+                <!-- Dynamic -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- AI Assistant Tab -->
+      <div class="tab-panel" id="ai-assistant">
+        <div class="ai-assistant-container card card-glass">
+          <div class="chatbot-header">
+            <div class="bot-info">
+              <div class="bot-icon-wrapper"><i class="fa-solid fa-robot"></i></div>
+              <div>
+                <h4>Ball Knowledge AI</h4>
+                <p class="bot-status"><span class="pulse-dot"></span> Tactical Analysis Engine Online</p>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-icon-only" id="btn-clear-chat" title="Clear Chat History">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+          
+          <!-- Messages Box -->
+          <div class="chat-messages-box" id="chat-messages">
+            <div class="message system-msg">
+              <i class="fa-solid fa-shield-halved text-accent"></i>
+              <span>Welcome to Ball Knowledge AI Assistant. Ask me anything about players, goals, trophies, matches, leagues, or debates. I draw directly from the active stats repository.</span>
+            </div>
+            <div class="message bot-msg">
+              <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+              <div class="msg-text">
+                Hello football fan! Need stats to back up your debates? Ask me questions like:
+                <ul>
+                  <li>"Who is the top scorer in Premier League?"</li>
+                  <li>"Compare Haaland and Mbappe attributes"</li>
+                  <li>"How many UCL goals does Cristiano Ronaldo have?"</li>
+                  <li>"Tell me about Diego Maradona's World Cup stats"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Suggestions -->
+          <div class="suggestion-pills-container">
+            <button class="suggestion-pill">Compare Messi and Ronaldo</button>
+            <button class="suggestion-pill">Who has more Ballon d'Ors?</button>
+            <button class="suggestion-pill">La Liga Standings</button>
+            <button class="suggestion-pill">Show Pele career stats</button>
+          </div>
+          
+          <!-- Input Form -->
+          <div class="chatbot-input-row">
+            <input type="text" id="chat-input" placeholder="Ask Ball Knowledge AI about player comparisons, tables, and records..." autocomplete="off">
+            <button class="btn btn-primary" id="btn-send-chat">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+  
+  <!-- CDNs -->
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Script modules -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

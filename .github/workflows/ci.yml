@@ -1,0 +1,27 @@
+name: Static Assets CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify-structure:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Check Critical Files
+      run: |
+        echo "Verifying project structure..."
+        test -f index.html || (echo "index.html is missing!" && exit 1)
+        test -f style.css || (echo "style.css is missing!" && exit 1)
+        test -f app.js || (echo "app.js is missing!" && exit 1)
+        test -f statsData.js || (echo "statsData.js is missing!" && exit 1)
+        test -f compare.js || (echo "compare.js is missing!" && exit 1)
+        test -f teamCompare.js || (echo "teamCompare.js is missing!" && exit 1)
+        test -f matchCenter.js || (echo "matchCenter.js is missing!" && exit 1)
+        test -f aiAssistant.js || (echo "aiAssistant.js is missing!" && exit 1)
+        echo "All critical source files are present!"
