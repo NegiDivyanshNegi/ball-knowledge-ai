@@ -24,8 +24,8 @@ An AI console that parses selected statistics and generates a typewriter-animate
 Inspect managers, home stadiums, squads, and side-by-side graphical trophy cabinet counts.
 ![Team Compare UI](images/team_compare.png)
 
-### 5. Live Match Simulator & Commentary Console
-Simulate classic matches (El Clásico or World Cup Finals) with customizable speed multipliers. Features ticking clock feeds, live bars (possession, shots, corners), yellow/red card timelines, and scrolling commentaries.
+### 5. Live Match Center & Commentary Console
+Connects directly to ESPN's public live feeds to show real-life schedules and live scores, defaulting to the active FIFA World Cup tournament. Includes live possession/shot statistics, card notifications, and reverse-chronological match commentaries.
 ![Match Center](images/match_center.png)
 
 ### 6. Conversational AI Stats Assistant
@@ -39,8 +39,8 @@ A messaging chat window where fans can ask queries (e.g., "compare Pele and Mara
 1. **Detailed Player Database**: Granular stats (appearances, goals, assists, UCL records, World Cup milestones, pass accuracy, dribbles, and defensive actions) for current stars (Messi, Ronaldo, Haaland, Mbappé, Salah, De Bruyne) and legends (Pelé, Maradona, Cruyff, Zidane, Ronaldinho, R9).
 2. **Interactive Radar Charts**: Leverages Chart.js to compare technical scores across Pace, Dribbling, Shooting, Physicality, Defending, and Passing.
 3. **Playing Zone Heatmaps**: Vector grids that programmatically light up based on the selected player's positioning preferences.
-4. **Match Simulator HUD**: Pushes event badges (goals, card warnings, subs) and simulates live match stats dynamically.
-5. **Stats Hub**: Renders table standings for the Premier League and La Liga, along with leaderboards for top scorers and assisters.
+4. Real-time Match Center HUD: Integrates live ESPN API feeds for the FIFA World Cup, Premier League, La Liga, and Champions League, pulling live scores, clock timings, event cards, and commentaries.
+5. Stats Hub: Renders table standings for the Premier League and La Liga, along with top scorer and assist leaderboards.
 6. **Robust NLP Parser**: A rule-based assistant matching user text questions to retrieve precise statistics.
 
 ---
