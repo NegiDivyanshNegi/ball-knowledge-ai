@@ -1,6 +1,6 @@
 // Match Center: Live ESPN API Scoring and Commentary Console
 
-let activeLeagueId = 'eng.1'; // Default: Premier League
+let activeLeagueId = 'fifa.world'; // Default: World Cup
 let activeMatchId = null;
 let autoRefreshActive = true;
 let refreshInterval = null;
@@ -51,6 +51,7 @@ async function loadLeagueScoreboard() {
     
     matchesList = data.events || [];
     populateMatchDropdown();
+    updateTickerUI();
     renderDailySchedulesAndResults();
   } catch (error) {
     console.error("Error loading scoreboard:", error);
@@ -106,6 +107,53 @@ function getEventScoreString(event) {
   return '';
 }
 
+// Update the top live scrolling ticker
+function updateTickerUI() {
+  const ticker = document.getElementById('ticker-scroll');
+  if (!ticker) return;
+
+  if (matchesList.length === 0) {
+    ticker.innerHTML = `
+      <div class="ticker-item">
+        <span class="ticker-comp">${getLeagueDisplayName()}</span>
+        <span class="ticker-teams">No scheduled matches today</span>
+        <span class="ticker-time">-</span>
+      </div>
+    `;
+    return;
+  }
+
+  ticker.innerHTML = '';
+  matchesList.forEach(event => {
+    const statusState = event.status?.type?.state;
+    const scoreStr = getEventScoreString(event);
+    const homeComp = event.competitions?.[0]?.competitors?.find(c => c.homeAway === 'home');
+    const awayComp = event.competitions?.[0]?.competitors?.find(c => c.homeAway === 'away');
+    const homeShort = homeComp?.team?.abbreviation || 'HM';
+    const awayShort = awayComp?.team?.abbreviation || 'AW';
+
+    const matchName = `${homeShort} ${scoreStr || 'vs'} ${awayShort}`;
+    
+    let timeLabel = '';
+    if (statusState === 'in') {
+      timeLabel = event.status?.type?.shortDetail || 'LIVE';
+    } else if (statusState === 'post') {
+      timeLabel = 'FT';
+    } else {
+      timeLabel = formatTime(event.date);
+    }
+
+    const div = document.createElement('div');
+    div.className = 'ticker-item';
+    div.innerHTML = `
+      <span class="ticker-comp">${getLeagueDisplayName()}</span>
+      <span class="ticker-teams">${matchName}</span>
+      <span class="ticker-time" style="${statusState === 'in' ? 'background: #00ff87; color: #000; border-radius: 4px; padding: 2px 4px;' : ''}">${timeLabel}</span>
+    `;
+    ticker.appendChild(div);
+  });
+}
+
 // Format ISO date to local time e.g., "19:00"
 function formatTime(isoStr) {
   try {
@@ -128,6 +176,18 @@ async function loadSelectedMatchDetails() {
     renderMatchHUD(data);
     renderMatchStatistics(data);
     renderMatchCommentary(data);
+
+    // Update match info in local matchesList and refresh ticker
+    const header = data.header;
+    const competition = header?.competitions?.[0];
+    if (competition) {
+      const matchInList = matchesList.find(e => e.id === activeMatchId);
+      if (matchInList && matchInList.competitions?.[0]) {
+        matchInList.competitions[0].competitors = competition.competitors;
+        matchInList.status = competition.status;
+      }
+      updateTickerUI();
+    }
     
     // Manage polling state
     const gameState = data.meta?.gameState || 'pre'; // "pre" | "in" | "post"
@@ -332,6 +392,15 @@ function renderMatchCommentary(data) {
   });
 }
 
+// Helper to get clean league names
+function getLeagueDisplayName() {
+  if (activeLeagueId === 'fifa.world') return 'FIFA World Cup';
+  if (activeLeagueId === 'eng.1') return 'Premier League';
+  if (activeLeagueId === 'esp.1') return 'La Liga';
+  if (activeLeagueId === 'uefa.champions') return 'UEFA Champions League';
+  return activeLeagueId.toUpperCase().replace('.', ' ');
+}
+
 // Render schedule grids dynamically from the daily scoreboard feed
 function renderDailySchedulesAndResults() {
   const upcomingList = document.getElementById('upcoming-fixtures-list');
@@ -357,7 +426,7 @@ function renderDailySchedulesAndResults() {
       div.className = 'fixture-item';
       div.innerHTML = `
         <div class="sched-left">
-          <span class="sched-comp">${activeLeagueId.toUpperCase().replace('.', ' ')}</span>
+          <span class="sched-comp">${getLeagueDisplayName()}</span>
           <span class="sched-teams">${homeName} vs. ${awayName}</span>
         </div>
         <div class="sched-right">
@@ -384,7 +453,7 @@ function renderDailySchedulesAndResults() {
       div.className = 'result-item';
       div.innerHTML = `
         <div class="sched-left">
-          <span class="sched-comp">${activeLeagueId.toUpperCase().replace('.', ' ')} ${isLive ? '• LIVE' : '• FT'}</span>
+          <span class="sched-comp">${getLeagueDisplayName()} ${isLive ? '• LIVE' : '• FT'}</span>
           <span class="sched-teams">${homeName} vs. ${awayName}</span>
         </div>
         <div class="result-score" style="${isLive ? 'border-color: #00ff87; color: #00ff87;' : ''}">${scoreStr}</div>
@@ -409,7 +478,7 @@ function generateMockDetailsFallback() {
     }
   }
 
-  document.getElementById('hud-match-title').innerText = activeLeagueId.toUpperCase().replace('.', ' ');
+  document.getElementById('hud-match-title').innerText = getLeagueDisplayName();
   document.getElementById('hud-home-name').innerText = homeName;
   document.getElementById('hud-away-name').innerText = awayName;
   document.getElementById('hud-score').innerText = "0 - 0";
@@ -420,7 +489,7 @@ function generateMockDetailsFallback() {
 }
 
 function showEmptyState() {
-  document.getElementById('hud-match-title').innerText = activeLeagueId.toUpperCase().replace('.', ' ');
+  document.getElementById('hud-match-title').innerText = getLeagueDisplayName();
   document.getElementById('hud-home-name').innerText = 'No Matches';
   document.getElementById('hud-away-name').innerText = 'No Matches';
   document.getElementById('hud-score').innerText = '--';
