@@ -469,29 +469,36 @@
         <section class="simulator-controls card card-glass">
           <div class="controls-row">
             <div class="control-item">
-              <label for="select-match">Preset Match</label>
-              <select id="select-match" class="custom-select select-inline">
-                <option value="club_match">El Clásico: Real Madrid vs Barcelona</option>
-                <option value="national_match">World Cup Rematch: Argentina vs France</option>
+              <label for="select-league">League</label>
+              <select id="select-league" class="custom-select select-inline">
+                <option value="eng.1">English Premier League</option>
+                <option value="esp.1">Spanish La Liga</option>
+                <option value="uefa.champions">UEFA Champions League</option>
               </select>
             </div>
             
             <div class="control-item">
-              <label for="sim-speed">Simulation Speed</label>
-              <select id="sim-speed" class="custom-select select-inline">
-                <option value="1000">1x (Real-time Comments)</option>
-                <option value="500">2x Speed</option>
-                <option value="200">5x Speed</option>
-                <option value="50">10x Speed (Blitz)</option>
+              <label for="select-match">Real Match</label>
+              <select id="select-match" class="custom-select select-inline" style="max-width: 250px;">
+                <option value="">Loading matches...</option>
+              </select>
+            </div>
+            
+            <div class="control-item">
+              <label for="refresh-rate">Auto Refresh</label>
+              <select id="refresh-rate" class="custom-select select-inline">
+                <option value="15000">15s</option>
+                <option value="30000" selected>30s</option>
+                <option value="60000">60s</option>
               </select>
             </div>
             
             <div class="actions-group">
               <button class="btn btn-primary" id="btn-start-sim">
-                <i class="fa-solid fa-play"></i> Start Match
+                <i class="fa-solid fa-rotate fa-spin"></i> Live Sync: On
               </button>
               <button class="btn btn-secondary" id="btn-reset-sim">
-                <i class="fa-solid fa-rotate-left"></i> Reset
+                <i class="fa-solid fa-arrows-rotate"></i> Refresh
               </button>
             </div>
           </div>
